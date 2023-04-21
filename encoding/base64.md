@@ -4,7 +4,7 @@
 # Base64
 - Computers usually store data as binary.
 - Base64 is a text representation of data that consists of only 64 characters which 
-  are the alphanumeric characters (lowercase and uppercase), +, / and =. 
+  are the alphanumeric characters (lowercase and uppercase), +, /. 
   - These 64 characters are considered ‘safe’ because, they cannot be misinterpreted
     by legacy computers and programs unlike characters such as <, > \n and many others.
 - Base64 encoding is not meant to provide security.
