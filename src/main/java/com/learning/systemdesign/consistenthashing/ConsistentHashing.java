@@ -153,14 +153,16 @@ public class ConsistentHashing {
         System.out.println("key5000: replica 2 is present on server: " + ch.getReplica("key5000", 2));
         System.out.println("key5000: replica 3 is present on server: " + ch.getReplica("key5000", 3));
 
-
         ch.removeServer("server3");
         System.out.println("After removing server3");
         System.out.println("key101: will be rebalanced to server: " + ch.getServer("key101"));
         System.out.println("Key101 data is fetched from all replicas");
-        System.out.println(" Replica 1 data " + replica1Data);
-        System.out.println(" Replica 2 data " + replica2Data);
-        System.out.println(" Replica 3 data " + replica3Data);
+        replica1Data = ch.getData("key101", 1);
+        replica2Data = ch.getData("key101", 2);
+        replica3Data = ch.getData("key101", 3);
+        System.out.println("Replica 1 data " + replica1Data);
+        System.out.println("Replica 2 data " + replica2Data);
+        System.out.println("Replica 3 data " + replica3Data);
 
         System.out.println("key5000: is present on server: " + ch.getServer("key5000"));
     }
