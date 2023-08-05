@@ -71,7 +71,7 @@ public class ConsistentHashing {
 
     private long generateHash(String key, int replica) {
         md.reset();
-        String digestKey = key + String.valueOf(replica);
+        String digestKey = key + replica;
         md.update(digestKey.getBytes());
         byte[] digest = md.digest();
         long hash = ((long) (digest[3] & 0xFF) << 24) |
