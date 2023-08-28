@@ -11,16 +11,17 @@
   
 ### Data access patterns
 
+- There is a common conception that disk access is slow compared to memory access.
+- This depends on data access patterns.  
 - There are two main data access patterns.
-- `Sequential I/O`
-  - There is a common conception that sequential I/O is slow compared to memory access.
-- `Random`
-  - For hard drives it takes time to move the data because it moves the arm(pointer) physically b/w different locations.
-  - This makes `Random` access slow.
+  - `Sequential I/O`
+    - For sequential I/O the arm(pointer) doesn't need to jump, it is much faster to read/write data one after another.
+  - `Random`
+    - For hard drives it takes time to move the data because it moves the arm(pointer) physically b/w different locations.
+    - This makes `Random` access slow.
 
 #### Kafka uses SEQUENTIAL data access pattern
 
-- The arm does not need to move, it must faster to read/write data one after another.
 - Kafka uses this pattern and creates an append-only log as its primary data structure.
   - An append-only log adds new data at the end of the file.
 - On modern hardware with an array of these hard disks, sequential writes reach in the order of few hundreds of MB's,
