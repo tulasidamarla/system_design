@@ -49,5 +49,5 @@ Map<RowKey, SoredMap<colKey, colValue>>
 - Cassandra uses hash functions to generate unique values also known as tokens for identifying partition keys.
   - Range of the tokens is -2<sup>63</sup> to 2<sup>63</sup>-1.
 - Cassandra uses consistent hashing(virtual nodes) for assigning partition keys to a node.
-  - For more information on consistent hashing, refer [Consistent Hashing](../../../problems/consistent_hashing/ConsistentHashing.md)
+  - For more information on consistent hashing, refer [Consistent Hashing](../../../problems/1.consistent_hashing/ConsistentHashing.md)
   
