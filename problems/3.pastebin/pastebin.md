@@ -82,7 +82,7 @@ deletePaste(api_dev_key, paste_key)
   - No relationship between records(except storing info about user and created paste)
   - Service is read-heavy
 
-<img src="../images/pastebin_db_model.png" height="300" width="400"/>
+<img src="images/pastebin_db_model.png" height="300" width="400"/>
 
 - URLHash is the generated pastebin URL hash.
 - ContentKey is the object key(usually either amazon s3 URL, google cloud storage URL) storing the contents of the paste.
@@ -95,7 +95,7 @@ deletePaste(api_dev_key, paste_key)
   - `Metadata storage:` Stores data related to each paste.
   - `Object storage:` Stores the content of the pastes.
   
-<img src="../images/pastebin_hld.png" height="300" width="400"/>
+<img src="images/pastebin_hld.png" height="300" width="400"/>
 
 ## Component design(Low level design)
 
@@ -206,7 +206,7 @@ def generate_random_string(n):
 - After removing the expired links, the keys should be put back into key db.
 - For object storage life cycle policies can be setup, which are automatically removed by cloud provider.
 
-<img src="../images/pastebin_design.png" height="300" width="400"/>
+<img src="images/pastebin_design.png" height="300" width="400"/>
 
 - `Note:` Load balancer service is not required for external object storage like s3.
 
