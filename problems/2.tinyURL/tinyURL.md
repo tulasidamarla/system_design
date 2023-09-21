@@ -73,7 +73,7 @@ void deleteURL(user_name, tiny_url)
   - No relationship between records(except storing info about user and created URL)
   - Service is read-heavy
 
-<img src="../images/tinyurl_data_model.png" height="300" width="400"/>
+<img src="images/tinyurl_data_model.png" height="300" width="400"/>
 
 - `Choosing DB`
   - `RDBMS:` A relational database (RDBMS) is a good choice if the expected load is low and there is no need for 
@@ -162,7 +162,7 @@ def generate_random_string(n):
             yield string
 ```
 
-<img src="../images/app_server_design.png" height="300" width="400"/>
+<img src="images/app_server_design.png" height="300" width="400"/>
 
 ### _Data partitioning and replication_
 
@@ -193,7 +193,7 @@ def generate_random_string(n):
   - Update the cache and pass the new entry to all cache replicas.
   - Each replica can update their cache by adding the new entry.
 
-<img src="../images/cache_design.png" height="300" width="400"/>
+<img src="images/cache_design.png" height="300" width="400"/>
 
 ### _Load balancer_
 
@@ -216,7 +216,7 @@ def generate_random_string(n):
 - A backend process(cleanup service) should make sure that expired links are removed.
 - After removing the expired links, the keys should be put back into key db.
 
-<img src="../images/cleanup_service_design.png" height="400" width="500"/>  
+<img src="images/cleanup_service_design.png" height="400" width="500"/>  
 
 ### _Security and Permissions_
 
