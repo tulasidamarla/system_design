@@ -201,7 +201,7 @@ def generate_random_string(n):
   - Between client and app servers
   - Between app servers and database servers
   - Between app servers and cache servers
-- Stratagies
+- Strategies
   - `round-robin`
     - Simple to implement and doesn't introduce over head.
     - Doesn't take server load into consideration.  
@@ -217,3 +217,13 @@ def generate_random_string(n):
 - After removing the expired links, the keys should be put back into key db.
 
 <img src="../images/cleanup_service_design.png" height="400" width="500"/>  
+
+### _Security and Permissions_
+
+- Private URLs can be created to allow access to certain users.
+- There are two ways to this.
+  - Store permission level (public/private) with each URL in the database.
+  - Create a separate table to store UserIDs that have permission to see a specific URL.
+    - Storing the data in a column wide DB like cassandra with key is the hash and columns are the list of userIds
+      which have access.
+- If a user does not have permission and tries to access a URL, send an error (HTTP 401) back.      

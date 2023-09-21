@@ -148,3 +148,74 @@ def generate_random_string(n):
 ```
 
 ### _Datastore layer_
+
+- `Metadata database:`
+  - A relational db like MySQL or a distributed key-value store like Dynamo or cassandra can be used.
+- `Object storage:`
+  - An object storage service like Amazon S3.
+
+### _Data partitioning and replication_
+
+- DB needs to be scaled for storing billions of pastes metadata.
+- Scaling requires a partitioning scheme to store data to different DB servers.
+  - `Range based partitioning`
+    - Store URLs based on the first letter of the hash key.
+    - Some less frequently letters can be combined.
+    - `Problems`
+      - Can lead to unbalanced servers due to hotspots.
+  - `Hash based partitioning`
+    - Calculate the hash of key to determine the partition.
+    - This approach can still lead to hotspot especially when servers are added and removed.
+    - The solution for the hotspots is to use `consistent-hasing`.
+
+### _Cache_
+
+- The system can use Memcache or redis, which can store pastes with their respective keys.
+- Caching can be used for both the metadata and the pastes.  
+- The application servers, before hitting object storage, can quickly check if the cache has the desired paste.
+- Cache for pastes requires 10 GB. Most modern servers support 256 GB, all the data can fit in one server.
+  - Alternately, we can use a couple of smaller servers for better read throughput.
+- `Cache eviction policy`
+  - Least Recently Used (LRU) can be a reasonable policy for this system.
+    - For custom-built caches, using a data structure like linked hash map can achieve this.
+    - For systems like memcached and redis, various configuration options are provided to choose LRU.
+- `Handling cache miss`
+  - Whenever there is a cache miss, app servers would be hitting a backend object storage.
+  - Update the cache and pass the new entry to all cache replicas.
+  - Each replica can update their cache by adding the new entry.
+
+### _Load balancer_
+
+- Load balancing layer can be placed at three places in the system:
+  - Between client and app servers
+  - Between app servers and database servers
+  - Between app servers and cache servers(both metadata and block cache)
+- Strategies
+  - `round-robin`
+    - Simple to implement and doesn't introduce over head.
+    - Doesn't take server load into consideration.
+  - `weighted round-robin`
+    - Server load is taken into consideration before sending request to a server.
+    - Puts over head on the load balancer.
+- Other strategies like least connection, least response time, iphash etc.
+
+### _DB cleanup_
+
+- If a user specified expiration time or default expiration time is reached, entries should be removed from DB.
+- A backend process(cleanup service) should make sure that expired links(or hashes) are removed.
+- After removing the expired links, the keys should be put back into key db.
+- For object storage life cycle policies can be setup, which are automatically removed by cloud provider.
+
+<img src="../images/pastebin_design.png" height="300" width="400"/>
+
+- `Note:` Load balancer service is not required for external object storage like s3.
+
+### _Security and Permissions_
+
+- Private URLs can be created to allow access to certain users.
+- There are two ways to this.
+  - Store permission level (public/private) with each paste in the database.
+  - Create a separate table to store UserIDs that have permission to see a specific URL.
+    - Storing the data in a column wide DB like cassandra with key is the hash and columns are the list of userIds
+      which have access.
+- If a user does not have permission and tries to access a URL, send an error (HTTP 401) back.      
