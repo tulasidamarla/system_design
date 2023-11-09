@@ -227,3 +227,7 @@ def generate_random_string(n):
     - Storing the data in a column wide DB like cassandra with key is the hash and columns are the list of userIds
       which have access.
 - If a user does not have permission and tries to access a URL, send an error (HTTP 401) back.      
+
+## Questions?
+
+- How do you handle custom aliases?
