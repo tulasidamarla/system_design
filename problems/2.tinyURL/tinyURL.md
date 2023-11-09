@@ -126,7 +126,7 @@ void deleteURL(user_name, tiny_url)
   - `Generating keys offline`
     - A standalone Key Generation Service (KGS) that generates random six letter strings beforehand.
     - Store the keys in a database and ensure no duplicates.
-    - When a request comes for creation, a key is fetching from already generated keys.
+    - When a request comes for creation, a key is fetched from already generated keys.
     - `Advantages`
       - No need to worry about duplicates
       - No need to encode URLs
