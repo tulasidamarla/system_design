@@ -28,7 +28,7 @@
 
 - Whenever the system needs to read or write data, the first step it performs is to apply the 
   MD5/SHA or any custom hashing algorithm to the key.
-- The output of this hashing algorithm determines within which range the data lies.
+- The output of this hashing algorithm determines the range in which the data lies.
   - It internally uses Binary search tree(BST) to choose a node.
 - Thus, the hash generated from the key tells us the node where the data will be stored.
 
