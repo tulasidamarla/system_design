@@ -215,8 +215,42 @@ else:
 - It can easily fit in a single server, but to accommodate 10 million req/sec(10 req/sec/user) it is better to have
   multiple servers for high availability.
 
-```
-TODO: write program for fixed window counter
+```python
+class FixedWindowCounter:
+    def __init__(self, window_size):
+        self.window_size = window_size
+        self.window = [0] * window_size
+        self.current_index = 0
+        self.count = 0
+
+    def increment(self):
+        # Update the count for the current window
+        self.window[self.current_index] += 1
+        # Increment the overall count
+        self.count += 1
+        # Move to the next index in the window
+        self.current_index = (self.current_index + 1) % self.window_size
+
+    def get_count(self):
+        return self.count
+
+    def get_window_counts(self):
+        return self.window
+
+# Example usage:
+window_size = 5
+counter = FixedWindowCounter(window_size)
+
+# Increment the counter multiple times
+for _ in range(8):
+    counter.increment()
+
+# Get the overall count
+print("Overall count:", counter.get_count())
+
+# Get the counts within the window
+print("Window counts:", counter.get_window_counts())
+
 ```  
 - `Pros`
   - Memory efficient
