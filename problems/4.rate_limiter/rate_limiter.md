@@ -279,7 +279,7 @@ print("Window counts:", counter.get_window_counts())
   - epoch time takes 4 bytes + 20 bytes for sorted set overhead
   - Memory required for an entry is 8 + (4 + 20)*500 = 8 + 24 * 500 = 12000bytes = 12 kb
   - For 1 million users it takes 12kb * 1M = 12 GB.
-  - Sliding window log takes 32 GB, which is very high compared to 32 MB of fixed window counter.
+  - Sliding window log takes 12 GB, which is very high compared to 32 MB of fixed window counter.
 - `Pros`
   - Rate limiting implemented using this method is accurate during any time window.
 - `Cons`
