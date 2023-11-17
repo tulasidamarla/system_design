@@ -195,7 +195,7 @@ else:
   - Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
 - Let's take an example to understand this flow.
   - Let's assume rate limiter is allowing three requests per minute per user.
-- Implementation of fixed window counter is very simple. For ex, let's assume our rate limiter limits 
+- Implementation of fixed window counter is as follows. For ex, let's assume our rate limiter limits 
   10 req/sec per user.
   - we can use hash table(key=userId, value=count)
   - If userId is not in hash table set count = 10 and startTime = currentTime.
