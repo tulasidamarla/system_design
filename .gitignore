@@ -7,3 +7,4 @@
 .idea/modules.xml
 .idea/system_design.iml
 .idea/vcs.xml
+target/classes/com/learning/systemdesign/consistenthashing/ConsistentHashing.class
