@@ -70,7 +70,7 @@
 - Base64 is used commonly in a number of applications including email via MIME, as well as storing complex data in XML
   or JSON.
 ### Example:
-- Suppose you want to embed a couple images within an XML document. The images are binary data, while the XML 
+- Suppose you want to embed couple of images within an XML document. The images are binary data, while the XML 
     document is text. As we know XML cannot handle embedded binary data or text data with characters like `<,>` etc.
 - A typical XML document with embedded binary attachment like images as:    
 ```
