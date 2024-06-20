@@ -43,7 +43,7 @@
 
 ## Special processing
 
-- When fewer than 24 input bits are available in an input group, bits with value zero are added
+- When fewer than 24 input bits are available in an input group, zero bits are added
     (on the right) to form an integral number of 6-bit groups.
 - Padding at the end of the data is performed using the '=' character.
   - If final quantum of encoding input is an integral multiple of 24 bits, then the final unit of encoded output 
