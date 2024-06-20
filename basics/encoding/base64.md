@@ -91,7 +91,7 @@
 ## How to perform base64 encoding/decoding
 
 - Conversion from bytes to base64 text is called encoding.
-  - This is a bit different from how other encoding/decoding types.
+  - This is a bit different from other encoding/decoding types.
 - Conversion from base64 text to bytes is called decoding.  
   
 - Bash has a built-in command for base64 encoding/decoding. 
