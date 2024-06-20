@@ -47,7 +47,7 @@
     (on the right) to form an integral number of 6-bit groups.
 - Padding at the end of the data is performed using the '=' character.
   - If final quantum of encoding input is an integral multiple of 24 bits, then the final unit of encoded output 
-    will be an integral multiple of 4 characters with no "=" padding.
+    will be an integral multiple of 4 characters without "=" padding.
   - If the final quantum of encoding input is exactly 8 bits, then the final unit of encoded output will be two 
     characters followed by two "=" padding characters.
   - If the final quantum of encoding input is exactly 16 bits; here, the final unit of encoded output will be three 
