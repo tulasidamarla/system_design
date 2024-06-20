@@ -153,6 +153,8 @@ const buf = Buffer.from('hey there');
   - POST https://mk34rgwhnf.execute-api.ap-south-1.amazonaws.com/base64-encode
   - POST https://mk34rgwhnf.execute-api.ap-south-1.amazonaws.com/base64-decode
 
+<img src="../images/base64_aws_api.png">
+
 ### Fantasy example
 
 - Suppose you are a spy and you're on a mission to copy and take back a picture of great value back to your country's 
