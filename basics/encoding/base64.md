@@ -13,8 +13,7 @@
 # How it works
 
 - Base64 RFC can be found at [Base64 RFC](https://www.rfc-editor.org/rfc/rfc4648).
-- The Base64(2<sup>6</sup>) encoding is designed to represent arbitrary sequences of octets in a form that allows the use of both 
-  upper and lowercase letters but that need not be human-readable.
+- The Base64(2<sup>6</sup>) encoding is designed to represent arbitrary sequences of octets in a form that allows the use of both upper and lowercase letters but not required to be human-readable.
 - Each character in base64 takes 6 bits(2<sup>6</sup>=64).   
 - The encoding process represents 24-bit groups of input bits as output strings of 4 encoded characters.  
   - A 24-bit input group is formed by concatenating 3 8-bit input groups.
